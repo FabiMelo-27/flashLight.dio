@@ -9,21 +9,15 @@ const App = () => {
   const handleChangeToggle = () => setToggle(oldToggle => !oldToggle);
 
   useEffect(() => {
-    // Liga flash do celular
-    Torch.switchState(toggle);
+        Torch.switchState(toggle);
   }, [toggle]);
 
   useEffect(() => {
-    /**
-     * Quando o celular for chacoalhado, mudaremos o toggle
-     */
-    const subscription = RNShake.addListener(() => {
+       const subscription = RNShake.addListener(() => {
       setToggle(oldToggle => !oldToggle);
     });
 
-    // Essa func vai ser chamada quando o componets
-    // For ser desmontado
-    return () => subscription.remove();
+        return () => subscription.remove();
   }, []);
 
   return (
